@@ -1,0 +1,139 @@
+student@administrator-IdeaCentre-3-07IMB05:~/Desktop$ sudo service oracle-xe start
+[sudo] password for student: 
+student@administrator-IdeaCentre-3-07IMB05:~/Desktop$ sqlplus
+
+SQL*Plus: Release 11.2.0.2.0 Production on Fri Dec 19 10:04:16 2025
+
+Copyright (c) 1982, 2011, Oracle.  All rights reserved.
+
+Enter user-name: student
+Enter password: 
+
+Connected to:
+Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+
+SQL> create table customer5(CID number(5),CNAME varchar2(20),address varchar2(20));
+
+Table created.
+
+SQL> desc customer5;
+ Name					   Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID						    NUMBER(5)
+ CNAME						    VARCHAR2(20)
+ ADDRESS					    VARCHAR2(20)
+
+SQL> insert into customer5 values(CID number(5),CNAME varchar2(20),address varchar2(20));
+insert into customer5 values(CID number(5),CNAME varchar2(20),address varchar2(20))
+                                 *
+ERROR at line 1:
+ORA-00917: missing comma
+
+
+SQL> insert into customer5 values(&cid,'&cname',&salary);
+Enter value for cid: 
+Enter value for cname: 
+Enter value for salary: 
+old   1: insert into customer5 values(&cid,'&cname',&salary)
+new   1: insert into customer5 values(,'',)
+insert into customer5 values(,'',)
+                             *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> insert into customer5 values(&cid,'&cname',&address);
+Enter value for cid: 101
+Enter value for cname: robin
+Enter value for address: japan
+old   1: insert into customer5 values(&cid,'&cname',&address)
+new   1: insert into customer5 values(101,'robin',japan)
+insert into customer5 values(101,'robin',japan)
+                                         *
+ERROR at line 1:
+ORA-00984: column not allowed here
+
+
+SQL> insert into customer5 values(&cid,'&cname','&address');
+Enter value for cid: 101
+Enter value for cname: robin
+Enter value for address: japan
+old   1: insert into customer5 values(&cid,'&cname','&address')
+new   1: insert into customer5 values(101,'robin','japan')
+
+1 row created.
+
+SQL> /
+Enter value for cid: 102
+Enter value for cname: nami
+Enter value for address: skyland
+old   1: insert into customer5 values(&cid,'&cname','&address')
+new   1: insert into customer5 values(102,'nami','skyland')
+
+1 row created.
+
+SQL> /
+Enter value for cid: 103
+Enter value for cname: vivi
+Enter value for address: dessert
+old   1: insert into customer5 values(&cid,'&cname','&address')
+new   1: insert into customer5 values(103,'vivi','dessert')
+
+1 row created.
+
+SQL> /
+Enter value for cid: 104
+Enter value for cname: ragu
+Enter value for address: trichy
+old   1: insert into customer5 values(&cid,'&cname','&address')
+new   1: insert into customer5 values(104,'ragu','trichy')
+
+1 row created.
+
+SQL> select * from customer5;
+
+       CID CNAME		ADDRESS
+---------- -------------------- --------------------
+       101 robin		japan
+       102 nami 		skyland
+       103 vivi 		dessert
+       104 ragu 		trichy
+
+SQL> select cname from customer5 where cname like 'r%';
+
+CNAME
+--------------------
+robin
+ragu
+
+SQL> select cname from customer5 where cname like '%i';
+
+CNAME
+--------------------
+nami
+vivi
+
+SQL> select cname from customer5 where cname like '%am%';
+
+CNAME
+--------------------
+nami
+
+SQL> select cname from customer5 where cname like '___';
+
+no rows selected
+
+SQL> select * from customer5 where cname;
+select * from customer5 where cname
+                                  *
+ERROR at line 1:
+ORA-00920: invalid relational operator
+
+
+SQL> commit;
+
+Commit complete.
+
+SQL> 
+
+

@@ -1,0 +1,540 @@
+
+
+Enter user-name: student
+Enter password: 
+
+SQL> spool on;
+SQL> create table customer1(cid number(5),cname varchar2(20),caddr varchar2(20));
+
+Table created.
+
+SQL> insert into customer1 values(&cid,'&cname','&caddr');
+Enter value for cid: 710
+Enter value for cname: gopi
+Enter value for caddr: airport
+old   1: insert into customer1 values(&cid,'&cname','&caddr')
+new   1: insert into customer1 values(710,'gopi','airport')
+
+1 row created.
+
+SQL> /   
+Enter value for cid: 810
+Enter value for cname: khaleef
+Enter value for caddr: ilayangudi
+old   1: insert into customer1 values(&cid,'&cname','&caddr')
+new   1: insert into customer1 values(810,'khaleef','ilayangudi')
+
+1 row created.
+
+SQL> /
+Enter value for cid: 910
+Enter value for cname: saran
+Enter value for caddr: samayapuram
+old   1: insert into customer1 values(&cid,'&cname','&caddr')
+new   1: insert into customer1 values(910,'saran','samayapuram')
+
+1 row created.
+
+SQL> /
+Enter value for cid: 1100
+Enter value for cname: ajay
+Enter value for caddr: mannarpuram
+old   1: insert into customer1 values(&cid,'&cname','&caddr')
+new   1: insert into customer1 values(1100,'ajay','mannarpuram')
+
+1 row created.
+
+SQL> desc customer1;
+ Name					   Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID						    NUMBER(5)
+ CNAME						    VARCHAR2(20)
+ CADDR						    VARCHAR2(20)
+
+SQL> select * from customer1;
+
+       CID CNAME		CADDR
+---------- -------------------- --------------------
+       710 gopi 		airport
+       810 khaleef		ilayangudi
+       910 saran		samayapuram
+      1100 ajay 		mannarpuram
+
+SQL> create table account(Anum number(15),bname varchar2(20),balance number(20));
+
+Table created.
+
+SQL> insert into account values(&Anum,'&bname',&balance);
+Enter value for anum: 100
+Enter value for bname: iob
+Enter value for balance: 50000
+old   1: insert into account values(&Anum,'&bname',&balance)
+new   1: insert into account values(100,'iob',50000)
+
+1 row created.
+
+SQL> /
+Enter value for anum: 101
+Enter value for bname: iob
+Enter value for balance: 25000
+old   1: insert into account values(&Anum,'&bname',&balance)
+new   1: insert into account values(101,'iob',25000)
+
+1 row created.
+
+SQL> /
+Enter value for anum: 102
+Enter value for bname: iob
+Enter value for balance: 45000
+old   1: insert into account values(&Anum,'&bname',&balance)
+new   1: insert into account values(102,'iob',45000)
+
+1 row created.
+
+SQL> /
+Enter value for anum: 103
+Enter value for bname: iob
+Enter value for balance: 60000
+old   1: insert into account values(&Anum,'&bname',&balance)
+new   1: insert into account values(103,'iob',60000)
+
+1 row created.
+
+SQL> desc account
+ Name					   Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ANUM						    NUMBER(15)
+ BNAME						    VARCHAR2(20)
+ BALANCE					    NUMBER(20)
+
+SQL> select * from account;
+
+      ANUM BNAME		   BALANCE
+---------- -------------------- ----------
+       100 iob			     50000
+       101 iob			     25000
+       102 iob			     45000
+       103 iob			     60000
+
+SQL> create table loan(lno number(10),bname varchar2(20),amount number(20),primary key(lno));
+create table loan(lno number(10),bname varchar2(20),amount number(20),primary key(lno))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> create table loan(lno number(10),bname varchar2(20),amount number(20),primary key(lno));
+create table loan(lno number(10),bname varchar2(20),amount number(20),primary key(lno))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> create table loan1(lno number(10),bname varchar2(20),amount number(20),primary key(lno));
+create table loan1(lno number(10),bname varchar2(20),amount number(20),primary key(lno))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> create table loan5(lno number(10),bname varchar2(20),amount number(20),primary key(lno));
+
+Table created.
+
+SQL> insert into loan5 values(&lno,'&bname',&amount);
+Enter value for lno: 500
+Enter value for bname: iob
+Enter value for amount: 20000
+old   1: insert into loan5 values(&lno,'&bname',&amount)
+new   1: insert into loan5 values(500,'iob',20000)
+
+1 row created.
+
+SQL> /
+Enter value for lno: 501
+Enter value for bname: iob
+Enter value for amount: 15000
+old   1: insert into loan5 values(&lno,'&bname',&amount)
+new   1: insert into loan5 values(501,'iob',15000)
+
+1 row created.
+
+SQL> /
+Enter value for lno: 502
+Enter value for bname: iob
+Enter value for amount: 30000
+old   1: insert into loan5 values(&lno,'&bname',&amount)
+new   1: insert into loan5 values(502,'iob',30000)
+
+1 row created.
+
+SQL> /
+Enter value for lno: 503
+Enter value for bname: iob
+Enter value for amount: 40000
+old   1: insert into loan5 values(&lno,'&bname',&amount)
+new   1: insert into loan5 values(503,'iob',40000)
+
+1 row created.
+
+SQL> desc loan;
+ Name					   Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ NAME						    VARCHAR2(20)
+ ACNO						    NUMBER(38)
+ BRANCH 					    VARCHAR2(20)
+ AMOUNT 					    NUMBER(38)
+
+SQL> desc loan5;
+ Name					   Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ LNO					   NOT NULL NUMBER(10)
+ BNAME						    VARCHAR2(20)
+ AMOUNT 					    NUMBER(20)
+
+SQL> select * from loan5;
+
+       LNO BNAME		    AMOUNT
+---------- -------------------- ----------
+       500 iob			     20000
+       501 iob			     15000
+       502 iob			     30000
+       503 iob			     40000
+
+SQL> create table branch(bname varchar2(20),bcity varchar2(20),assets number(20));
+
+Table created.
+
+SQL> desc branch;
+ Name					   Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ BNAME						    VARCHAR2(20)
+ BCITY						    VARCHAR2(20)
+ ASSETS 					    NUMBER(20)
+
+SQL> insert into branch values('&bname','&bcity',&assets);^CEnter value for bcity: ^C^C
+Enter value for assets: 
+
+SQL> insert into branch values('&bname','&bcity',&assets);
+Enter value for bname: iob
+Enter value for bcity: trichy
+Enter value for assets: 20000000
+old   1: insert into branch values('&bname','&bcity',&assets)
+new   1: insert into branch values('iob','trichy',20000000)
+
+1 row created.
+
+SQL> /
+Enter value for bname: iob
+Enter value for bcity: kerala
+Enter value for assets: 300000
+old   1: insert into branch values('&bname','&bcity',&assets)
+new   1: insert into branch values('iob','kerala',300000)
+
+1 row created.
+
+SQL> /
+Enter value for bname: iob
+Enter value for bcity: chennai
+Enter value for assets: 50000 
+old   1: insert into branch values('&bname','&bcity',&assets)
+new   1: insert into branch values('iob','chennai',50000)
+
+1 row created.
+
+SQL> /
+Enter value for bname: iob
+Enter value for bcity: jammmu
+Enter value for assets: 600000
+old   1: insert into branch values('&bname','&bcity',&assets)
+new   1: insert into branch values('iob','jammmu',600000)
+
+1 row created.
+
+SQL> select * from branch;
+
+BNAME		     BCITY		      ASSETS
+-------------------- -------------------- ----------
+iob		     trichy		    20000000
+iob		     kerala		      300000
+iob		     chennai		       50000
+iob		     jammmu		      600000
+
+SQL> create table depositor(cname varchar2(20),anum number(10));
+
+Table created.
+
+SQL> desc depositor;
+ Name					   Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CNAME						    VARCHAR2(20)
+ ANUM						    NUMBER(10)
+
+SQL> insert into depositor values('&cname',&anum);
+Enter value for cname: ajay
+Enter value for anum: 999
+old   1: insert into depositor values('&cname',&anum)
+new   1: insert into depositor values('ajay',999)
+
+1 row created.
+
+SQL> /
+Enter value for cname: imam
+Enter value for anum: 998
+old   1: insert into depositor values('&cname',&anum)
+new   1: insert into depositor values('imam',998)
+
+1 row created.
+
+SQL> /
+Enter value for cname: gopi
+Enter value for anum: 997
+old   1: insert into depositor values('&cname',&anum)
+new   1: insert into depositor values('gopi',997)
+
+1 row created.
+
+SQL> /
+Enter value for cname: hari
+Enter value for anum: 996
+old   1: insert into depositor values('&cname',&anum)
+new   1: insert into depositor values('hari',996)
+
+1 row created.
+
+SQL> select * from depositor;
+
+CNAME			   ANUM
+-------------------- ----------
+ajay			    999
+imam			    998
+gopi			    997
+hari			    996
+
+SQL> create table borrower(cname varchar2(20),lno number(10));
+create table borrower(cname varchar2(20),lno number(10))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> create table borrower1(cname varchar2(20),lno number(10));
+
+Table created.
+
+SQL> desc borrower;
+ Name					   Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ NAME						    VARCHAR2(20)
+ LASTNUMBER					    VARCHAR2(30)
+
+SQL> insert into borrower('&cname',&lno);
+Enter value for cname: harish
+Enter value for lno: 1
+old   1: insert into borrower('&cname',&lno)
+new   1: insert into borrower('harish',1)
+insert into borrower('harish',1)
+                     *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword
+
+
+SQL> insert into borrower values('&cname',&lno);
+Enter value for cname: harish
+Enter value for lno: 01
+old   1: insert into borrower values('&cname',&lno)
+new   1: insert into borrower values('harish',01)
+
+1 row created.
+
+SQL> /
+Enter value for cname: david
+Enter value for lno: 02
+old   1: insert into borrower values('&cname',&lno)
+new   1: insert into borrower values('david',02)
+
+1 row created.
+
+SQL> /
+Enter value for cname: thameem
+Enter value for lno: 03
+old   1: insert into borrower values('&cname',&lno)
+new   1: insert into borrower values('thameem',03)
+
+1 row created.
+
+SQL> /
+Enter value for cname: syed
+Enter value for lno: 04
+old   1: insert into borrower values('&cname',&lno)
+new   1: insert into borrower values('syed',04)
+
+1 row created.
+
+SQL> select * from borrower;
+
+NAME		     LASTNUMBER
+-------------------- ------------------------------
+susi		     l-00001
+sriram		     l-00002
+hari		     l-00003
+mani		     l-00004
+santhos 	     00005
+harish		     1
+david		     2
+thameem 	     3
+syed		     4
+
+9 rows selected.
+
+SQL> select * from borrower1;
+
+no rows selected
+
+SQL> create table borrower2(cname varchar2(20),lno number(10));
+
+Table created.
+
+SQL> desc borrower2;
+ Name					   Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CNAME						    VARCHAR2(20)
+ LNO						    NUMBER(10)
+
+SQL> insert into borrower2('&cname',&lno);
+Enter value for cname: harish
+Enter value for lno: 1
+old   1: insert into borrower2('&cname',&lno)
+new   1: insert into borrower2('harish',1)
+insert into borrower2('harish',1)
+                      *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword
+
+
+SQL> insert into borrower2 values('&cname',&lno);
+Enter value for cname: harish
+Enter value for lno: 01
+old   1: insert into borrower2 values('&cname',&lno)
+new   1: insert into borrower2 values('harish',01)
+
+1 row created.
+
+SQL> /
+Enter value for cname: david
+Enter value for lno: 02
+old   1: insert into borrower2 values('&cname',&lno)
+new   1: insert into borrower2 values('david',02)
+
+1 row created.
+
+SQL> /
+Enter value for cname: thameem
+Enter value for lno: 03
+old   1: insert into borrower2 values('&cname',&lno)
+new   1: insert into borrower2 values('thameem',03)
+
+1 row created.
+
+SQL> /
+Enter value for cname: syed
+Enter value for lno: 04
+old   1: insert into borrower2 values('&cname',&lno)
+new   1: insert into borrower2 values('syed',04)
+
+1 row created.
+
+SQL> select * from borrower2;
+
+CNAME			    LNO
+-------------------- ----------
+harish			      1
+david			      2
+thameem 		      3
+syed			      4
+
+SQL> create table supplier(sno number(10),pno number(10),color varchar2(15),quantity number(10),primary key(sno,pno));
+
+Table created.
+
+SQL> desc supplier;
+ Name					   Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SNO					   NOT NULL NUMBER(10)
+ PNO					   NOT NULL NUMBER(10)
+ COLOR						    VARCHAR2(15)
+ QUANTITY					    NUMBER(10)
+
+SQL> insert into supplier values(&sno,&pno,'&color',&quantity);
+Enter value for sno: 1001
+Enter value for pno: 405
+Enter value for color: blue
+Enter value for quantity: 100
+old   1: insert into supplier values(&sno,&pno,'&color',&quantity)
+new   1: insert into supplier values(1001,405,'blue',100)
+
+1 row created.
+
+SQL> /
+Enter value for sno: 1002
+Enter value for pno: 410
+Enter value for color: green
+Enter value for quantity: 250
+old   1: insert into supplier values(&sno,&pno,'&color',&quantity)
+new   1: insert into supplier values(1002,410,'green',250)
+
+1 row created.
+
+SQL> /
+Enter value for sno: 1003
+Enter value for pno: 415
+Enter value for color: red
+Enter value for quantity: 500
+old   1: insert into supplier values(&sno,&pno,'&color',&quantity)
+new   1: insert into supplier values(1003,415,'red',500)
+
+1 row created.
+
+SQL> /
+Enter value for sno: 1004
+Enter value for pno: 420
+Enter value for color: yellow
+Enter value for quantity: 550
+old   1: insert into supplier values(&sno,&pno,'&color',&quantity)
+new   1: insert into supplier values(1004,420,'yellow',550)
+
+1 row created.
+
+SQL> select * from supplier;
+
+       SNO	  PNO COLOR		QUANTITY
+---------- ---------- --------------- ----------
+      1001	  405 blue		     100
+      1002	  410 green		     250
+      1003	  415 red		     500
+      1004	  420 yellow		     550
+
+SQL> commit;
+
+Commit complete.
+
+SQL> select * from loan5
+  2  select * from borrower2 
+  3  select * from account;
+select * from borrower2
+*
+ERROR at line 2:
+ORA-00933: SQL command not properly ended
+
+
+SQL> select * from account;
+
+      ANUM BNAME		   BALANCE
+---------- -------------------- ----------
+       100 iob			     50000
+       101 iob			     25000
+       102 iob			     45000
+       103 iob			     60000
+
+
+

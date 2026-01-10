@@ -1,0 +1,100 @@
+Enter user-name: student
+Enter password: 
+
+Connected to:
+Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+
+SQL> create table branch8(bname varchar2(20),bcity varchar2(10),assets number(7));
+
+Table created.
+
+SQL> insert into branch8 values('&bname','&bcity','&assets');
+Enter value for bname: cantonment
+Enter value for bcity: trichy
+Enter value for assets: 50000
+old   1: insert into branch8 values('&bname','&bcity','&assets')
+new   1: insert into branch8 values('cantonment','trichy','50000')
+
+1 row created.
+
+SQL> /
+Enter value for bname: rockfort
+Enter value for bcity: madurai
+Enter value for assets: 40000
+old   1: insert into branch8 values('&bname','&bcity','&assets')
+new   1: insert into branch8 values('rockfort','madurai','40000')
+
+1 row created.
+
+SQL> /
+Enter value for bname: tnagar
+Enter value for bcity: chennai
+Enter value for assets: 30000 
+old   1: insert into branch8 values('&bname','&bcity','&assets')
+new   1: insert into branch8 values('tnagar','chennai','30000')
+
+1 row created.
+
+SQL> / 
+Enter value for bname: kknagar
+Enter value for bcity: salem
+Enter value for assets: 60000
+old   1: insert into branch8 values('&bname','&bcity','&assets')
+new   1: insert into branch8 values('kknagar','salem','60000')
+
+1 row created.
+
+SQL> select * from branch8;
+
+BNAME		     BCITY	    ASSETS
+-------------------- ---------- ----------
+cantonment	     trichy	     50000
+rockfort	     madurai	     40000
+tnagar		     chennai	     30000
+kknagar 	     salem	     60000
+
+SQL> insert into branch8 values('rockfort','trichy',70000);
+
+1 row created.
+
+SQL> select * from branch8;
+
+BNAME		     BCITY	    ASSETS
+-------------------- ---------- ----------
+cantonment	     trichy	     50000
+rockfort	     madurai	     40000
+tnagar		     chennai	     30000
+kknagar 	     salem	     60000
+rockfort	     trichy	     70000
+
+SQL> select bname,avg(assets) from branch8 group by bname;
+
+BNAME		     AVG(ASSETS)
+-------------------- -----------
+rockfort		   55000
+kknagar 		   60000
+tnagar			   30000
+cantonment		   50000
+
+SQL> select bname,sum(assets) from branch8 group by bname having sum(assets)>30000;
+
+BNAME		     SUM(ASSETS)
+-------------------- -----------
+rockfort		  110000
+kknagar 		   60000
+cantonment		   50000
+
+SQL> select bname,count(assets) from branch8 group by bname having count(assets)>=1;
+
+BNAME		     COUNT(ASSETS)
+-------------------- -------------
+rockfort			 2
+kknagar 			 1
+tnagar				 1
+cantonment			 1
+
+SQL> commit;
+
+Commit complete.
+
+

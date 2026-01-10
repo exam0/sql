@@ -1,0 +1,100 @@
+student@administrator-IdeaCentre-3-07IMB05:~/Desktop$ sudo service oracle-xe start
+[sudo] password for student: 
+student@administrator-IdeaCentre-3-07IMB05:~/Desktop$ sqlplus
+
+SQL*Plus: Release 11.2.0.2.0 Production on Fri Dec 19 10:59:37 2025
+
+Copyright (c) 1982, 2011, Oracle.  All rights reserved.
+
+Enter user-name: student
+Enter password: 
+
+Connected to:
+Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+
+SQL> create table branch7(bname varchar2(20),bcity varchar2(10),assets number(7));
+
+Table created.
+
+SQL> insert into branch7 values('&bname','&bity','&assets');
+Enter value for bname: cantonment
+Enter value for bity: trichy
+Enter value for assets: 50000
+old   1: insert into branch7 values('&bname','&bity','&assets')
+new   1: insert into branch7 values('cantonment','trichy','50000')
+
+1 row created.
+
+SQL> /
+Enter value for bname: rockfort
+Enter value for bity: madurai
+Enter value for assets: 40000
+old   1: insert into branch7 values('&bname','&bity','&assets')
+new   1: insert into branch7 values('rockfort','madurai','40000')
+
+1 row created.
+
+SQL> /
+Enter value for bname: tnagar
+Enter value for bity: chennai
+Enter value for assets: 30000
+old   1: insert into branch7 values('&bname','&bity','&assets')
+new   1: insert into branch7 values('tnagar','chennai','30000')
+
+1 row created.
+
+SQL> /
+Enter value for bname: kknagar
+Enter value for bity: salem
+Enter value for assets: 60000
+old   1: insert into branch7 values('&bname','&bity','&assets')
+new   1: insert into branch7 values('kknagar','salem','60000')
+
+1 row created.
+
+SQL> select * from branch7;
+
+BNAME		     BCITY	    ASSETS
+-------------------- ---------- ----------
+cantonment	     trichy	     50000
+rockfort	     madurai	     40000
+tnagar		     chennai	     30000
+kknagar 	     salem	     60000
+
+SQL> select bname,avg(assets) from branch7 where bname='cantonment' group by bname;
+
+BNAME		     AVG(ASSETS)
+-------------------- -----------
+cantonment		   50000
+
+SQL> select bname,min(assets) as minasset from branch7 where bname='rockfort' group by bname;
+
+BNAME		       MINASSET
+-------------------- ----------
+rockfort		  40000
+
+SQL> select bname,max(assets) as maxasset from branch7 where bname='rockfort' group by bname;
+
+BNAME		       MAXASSET
+-------------------- ----------
+rockfort		  40000
+
+SQL> select sum(assets) from branch7;
+
+SUM(ASSETS)
+-----------
+     180000
+
+SQL> select count(*) bcity from branch7 where bcity='trichy';
+
+     BCITY
+----------
+	 1
+
+SQL> commit;
+
+Commit complete.
+
+SQL> 
+
+

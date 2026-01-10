@@ -1,0 +1,177 @@
+[sudo] password for student: 
+Sorry, try again.
+[sudo] password for student: 
+student@administrator-IdeaCentre-3-07IMB05:~/Desktop$ sqlplus
+
+SQL*Plus: Release 11.2.0.2.0 Production on Fri Dec 19 10:45:27 2025
+
+Copyright (c) 1982, 2011, Oracle.  All rights reserved.
+
+Enter user-name: student
+Enter password: 
+
+Connected to:
+Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+
+SQL> create table loan5(lno number(5),bname varchar2(20),amount number(5));
+create table loan5(lno number(5),bname varchar2(20),amount number(5))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> create table loan7(lno number(5),bname varchar2(20),amount number(5));
+
+Table created.
+
+SQL> desc loan7;
+ Name					   Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ LNO						    NUMBER(5)
+ BNAME						    VARCHAR2(20)
+ AMOUNT 					    NUMBER(5)
+
+SQL> insert into loan7 values('&lno','&bname','&amount');
+Enter value for lno: 1001
+Enter value for bname: cantonment
+Enter value for amount: 80000
+old   1: insert into loan7 values('&lno','&bname','&amount')
+new   1: insert into loan7 values('1001','cantonment','80000')
+
+1 row created.
+
+SQL> /
+Enter value for lno: 1002
+Enter value for bname: rockfort
+Enter value for amount: 70000
+old   1: insert into loan7 values('&lno','&bname','&amount')
+new   1: insert into loan7 values('1002','rockfort','70000')
+
+1 row created.
+
+SQL> /
+Enter value for lno: 1003
+Enter value for bname: bazar
+Enter value for amount: 50000
+old   1: insert into loan7 values('&lno','&bname','&amount')
+new   1: insert into loan7 values('1003','bazar','50000')
+
+1 row created.
+
+SQL> /
+Enter value for lno: 1004
+Enter value for bname: simco
+Enter value for amount: 40000
+old   1: insert into loan7 values('&lno','&bname','&amount')
+new   1: insert into loan7 values('1004','simco','40000')
+
+1 row created.
+
+SQL> select * from loan7;
+
+       LNO BNAME		    AMOUNT
+---------- -------------------- ----------
+      1001 cantonment		     80000
+      1002 rockfort		     70000
+      1003 bazar		     50000
+      1004 simco		     40000
+
+SQL> create table account7(ano number(7),bname varchar2(20),balance number(7));
+
+Table created.
+
+SQL> insert into account7 values('&ano','&bname','&balance');
+Enter value for ano: 12345
+Enter value for bname: cantonment
+Enter value for balance: 20000
+old   1: insert into account7 values('&ano','&bname','&balance')
+new   1: insert into account7 values('12345','cantonment','20000')
+
+1 row created.
+
+SQL> /
+Enter value for ano: 12346
+Enter value for bname: trichy
+Enter value for balance: 19000
+old   1: insert into account7 values('&ano','&bname','&balance')
+new   1: insert into account7 values('12346','trichy','19000')
+
+1 row created.
+
+SQL> /
+Enter value for ano: 12347
+Enter value for bname: jknagar
+Enter value for balance: 17000
+old   1: insert into account7 values('&ano','&bname','&balance')
+new   1: insert into account7 values('12347','jknagar','17000')
+
+1 row created.
+
+SQL> /
+Enter value for ano: 12348
+Enter value for bname: kknagar
+Enter value for balance: 15000
+old   1: insert into account7 values('&ano','&bname','&balance')
+new   1: insert into account7 values('12348','kknagar','15000')
+
+1 row created.
+
+SQL> select * from account7;
+
+       ANO BNAME		   BALANCE
+---------- -------------------- ----------
+     12345 cantonment		     20000
+     12346 trichy		     19000
+     12347 jknagar		     17000
+     12348 kknagar		     15000
+
+SQL> select bname from loan7 union all select bname from account7;
+
+BNAME
+--------------------
+cantonment
+rockfort
+bazar
+simco
+cantonment
+trichy
+jknagar
+kknagar
+
+8 rows selected.
+
+SQL> select bname from loan7 union select bname from account7;
+
+BNAME
+--------------------
+bazar
+cantonment
+jknagar
+kknagar
+rockfort
+simco
+trichy
+
+7 rows selected.
+
+SQL> select bname from loan7 intersect select bname from account7;
+
+BNAME
+--------------------
+cantonment
+
+SQL> select bname from loan7 minus select bname from account7;
+
+BNAME
+--------------------
+bazar
+rockfort
+simco
+
+SQL> commit;
+
+Commit complete.
+
+SQL> 
+
+

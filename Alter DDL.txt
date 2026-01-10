@@ -1,0 +1,78 @@
+
+Enter user-name: student
+Enter password: 
+
+Connected to:
+Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+
+SQL> create table jamal(cname varchar2(10),ano number(20));
+
+Table created.
+
+SQL> insert into jamal values('&cname','&ano');
+Enter value for cname: ahamed
+Enter value for ano: 308
+old   1: insert into jamal values('&cname','&ano')
+new   1: insert into jamal values('ahamed','308')
+
+1 row created.
+
+SQL> select * from jamal;
+
+CNAME		  ANO
+---------- ----------
+ahamed		  308
+
+SQL> alter table jamal add city varchar(20);
+
+Table altered.
+
+SQL> desc jamal;
+ Name					   Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CNAME						    VARCHAR2(10)
+ ANO						    NUMBER(20)
+ CITY						    VARCHAR2(20)
+
+SQL> alter table jamal modify ano number(20);
+
+Table altered.
+
+SQL> desc jamal;
+ Name					   Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CNAME						    VARCHAR2(10)
+ ANO						    NUMBER(20)
+ CITY						    VARCHAR2(20)
+
+SQL> alter table jamal rename column balance to amount;
+alter table jamal rename column balance to amount
+                                *
+ERROR at line 1:
+ORA-00904: "BALANCE": invalid identifier
+
+
+SQL> alter table jamal rename column ano to regno;
+
+Table altered.
+
+SQL> desc jamal;
+ Name					   Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CNAME						    VARCHAR2(10)
+ REGNO						    NUMBER(20)
+ CITY						    VARCHAR2(20)
+
+SQL> alter table jamal drop column city;
+
+Table altered.
+
+SQL> select * from jamal;
+
+CNAME		REGNO
+---------- ----------
+ahamed		  308
+
+SQL> commit;
+
+Commit complete.

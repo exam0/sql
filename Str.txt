@@ -1,0 +1,53 @@
+Ex no:03 3.1 Reverse The String
+
+SQL> set serveroutput on
+
+SOLS declare
+
+2 s1varchar(20);
+
+3 s2varchar(20);
+
+4 c number(20);
+
+5 begin
+
+6 s1:='&string':
+
+7 c:=length(s1);
+
+8 while c>0
+
+9 loop
+
+10 s2:=s2| |substr(s1,c,1);
+
+11 c:=c-1;
+
+12 end loop:
+
+13 dbms_output.put_line('the given string is:' | |s1);
+
+14 dbms_output.put_line('the given string is:'| |s2);
+
+15 end;
+
+16/
+
+Enter value for string: gopinath
+
+old 6:s1:='&string';
+
+new 6: s1:='gopinath';
+
+the given string is:gopinath
+
+the given string is:htanipog
+
+2
+
+PL/SQL procedure successfully completed.
+
+SQL>commit;
+
+Commit complete

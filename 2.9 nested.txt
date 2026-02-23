@@ -1,0 +1,17 @@
+2.9
+
+SQL> select * from dep;
+SQL> select * from cust1;
+SQL> select distinct cname from cust1 where cname in (select cname from dep);
+
+SQL> select * from br;
+
+select bname, asset from br where asset>some(select asset from br where bcity='trichy');
+
+select bname, asset from br where asset>all(select asset from br where bcity='pudu');
+
+select bname, avg_asset from(select bname, avg(asset)as avg_asset from br group by bname)where avg_asset>200000;
+
+select max(sum_asset)from (select bname, sum(asset)as sum_asset from br group by bname);
+
+AI responses may include mistakes.

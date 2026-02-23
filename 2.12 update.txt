@@ -1,0 +1,8 @@
+2.12
+select * from act;
+update act set amount=amount*1.1;
+select * from act;
+update act set amount=amount*5;
+select * from act;
+update act set amount=case when amount<=10000then amount*1.05 else amount*5 end;
+select * from act;

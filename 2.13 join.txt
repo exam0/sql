@@ -1,0 +1,18 @@
+2.13
+
+create table tha(name varchar(10), regno number(5));
+
+insert into tha values('&name', &regno);
+
+create table markk(regno number(7), total number(8));
+
+ insert into markk values(&regno,&total);
+
+ Here are the SQL queries found in the image: 
+
+ • SQL&gt; select * from tha join markk on tha.regno=markk.regno; 
+ • SQL&gt; select * from tha left join markk on tha.regno=markk.regno; 
+
+ select * from tha right join markk on tha.regno=markk.regno
+
+ AI responses may include mistakes.

@@ -1,0 +1,13 @@
+2.8 
+Here are all the SQL queries present in the image: 
+
+• select * from br; 
+• select bname, avg(asset) from br group by bname; 
+• select bname, sum(asset) from br group by bname having sum (asset)&gt;30000; 
+
+• SELECT bname, COUNT(asset)
+FROM br
+GROUP BY bname
+HAVING COUNT(asset) >= 1;
+
+AI responses may include mistakes.

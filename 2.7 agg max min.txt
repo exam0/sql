@@ -1,0 +1,8 @@
+2.7
+
+SELECT SUM(amount) FROM ln;
+SELECT AVG(amount) FROM ln;
+SELECT COUNT(amount) FROM ln;
+SELECT MAX(amount) FROM ln;
+SELECT MIN(amount) FROM ln;
+SELECT bname, SUM(amount) FROM ln GROUP BY bname HAVING SUM(amount) > 70000000;

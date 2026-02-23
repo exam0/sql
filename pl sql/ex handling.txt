@@ -1,0 +1,53 @@
+Ex no:03 3.5 Exception Handling
+
+SQL> set serveroutput on
+
+SQL> declare
+
+2 a number:=0:
+
+3 b number:=1:
+
+4 cnumber:
+
+5 begin
+
+6 dbms_output.put_line(a||"||b||");
+
+7 for i in 3..10 loop
+
+8 c:=a+b;
+
+9 dbms_output.put_line(c||");
+
+10 a:=b:
+
+11 b:=c:
+
+12 end loop;
+
+13 end:
+
+14/
+
+OUTPUT:
+
+01
+
+1
+
+2
+
+3
+
+5
+
+8
+
+13
+
+21
+
+34
+
+PL/SQL procedure successfully completed.

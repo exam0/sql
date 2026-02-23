@@ -1,0 +1,70 @@
+create table payroll(eno number(4),ename varchar(10),bpay number(7),hra number(6),da number(6),pf number(6),gpay number(7),npay number(7));
+
+insert into payroll values(&eno,'&ename',&bpay,&hra,&da,&pf,&gpay,&npay);
+
+set serveroutput on;
+declare
+cursor a is select *from payroll;
+x payroll%rowtype;
+begin
+open a;
+loop
+fetch  a into x;
+exit when a%notfound;
+x.hra:=x.bpay*0.5;
+x.pf:=x.bpay*0.12;
+x.da:=x.bpay*0.15;
+x.gpay:=x.bpay+x.hra+x.da;
+x.npay:=x.gpay-x.pf;
+update payroll set hra=x.hra,da=x.da,pf=x.pf,gpay=x.gpay,npay=x.npay where eno=x.eno;
+end loop;
+close a;
+end;
+
+
+-----------------------
+
+SQL> set serveroutput on;
+SQL> declare
+  2  cursor a is select *from payroll;
+    3  x payroll%rowtype;
+      4  begin
+        5  open a;
+          6  loop
+            7  fetch  a into x;
+              8  exit when a%notfound;
+                9  x.hra:=x.bpay*0.5;
+                 10  x.pf:=x.bpay*0.12;
+                  11  x.da:=x.bpay*0.15;
+                   12  x.gpay:=x.bpay+x.hra+x.da;
+                    13  x.npay:=x.gpay-x.pf;
+                     14  update payroll set hra=x.hra,da=x.da,pf=x.pf,gpay=x.gpay,npay=x.npay where eno=x.eno;
+                      15  end loop;
+                       16  close a;
+                        17  end;
+                         18  /
+
+                         PL/SQL procedure successfully completed.
+
+                         SQL> select * from payroll;
+
+                                ENO ENAME	    BPAY	HRA	    DA	       PF	GPAY
+                                ---------- ---------- ---------- ---------- ---------- ---------- ----------
+                                      NPAY
+                                      ----------
+                                      	 1 sulai	   95000      40000	 12000	     9600     131999
+                                             122399
+
+                                             	 1 asif 	   79999      40000	 12000	     9600     131999
+                                                     122399
+
+                                                     	 3 rohit	   89999      45000	 13500	    10800     148499
+                                                             137699
+
+
+                                                                    ENO ENAME	    BPAY	HRA	    DA	       PF	GPAY
+                                                                    ---------- ---------- ---------- ---------- ---------- ---------- ----------
+                                                                          NPAY
+                                                                          ----------
+                                                                          	 9 ansari	   99999      50000	 15000	    12000     164999
+                                                                                 152999

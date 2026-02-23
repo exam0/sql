@@ -1,0 +1,7 @@
+2.11
+
+SQL> select * from act;
+SQL> select * from br;
+SQL> delete from act where bname='trichy';
+SQL> select * from act;
+SQL> commit;

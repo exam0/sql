@@ -91,7 +91,7 @@ SQL> select count(*) bcity from branch7 where bcity='trichy';
 ----------
 	 1
 
-SQL> commit;
+SQL> commit;6
 
 Commit complete.
 

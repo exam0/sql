@@ -1,0 +1,36 @@
+3.2
+SQL> create table student(rollno number(10), name varchar(20), mark1 number(10), mark2 number(10), total number(10), average number(10));
+
+Table created.
+
+SQL> insert into student values(&rollno, '&name', &mark1,&mark2,","
+
+SQL> set serveroutput on
+SQL> declare
+2 cursor c1 is select * from student;
+3 x student % rowtype;
+4 begin
+5 open c1;
+6 loop
+7 fetch c1 into x;
+8 exit when c1%notfound;
+9 x.total:=x.mark1+x.mark2;
+10 x.average:=x.total/2;
+11 update student set total=x.total, average=x.average where rollno=x.rollno;
+12 update student set total=x.total, average=x.average where rollno=x.rollno;
+13 end loop;
+14 close c1;
+15 end;
+16/
+PL/SQL procedure successfully completed.
+SQL> select * from student;
+ROLLNO NAME      MARK1      MARK2      TOTAL    AVERAGE
+---------- ---------- ---------- ---------- ---------- ----------
+40 gopi             90         98        188         94
+39 khaleef           76         78        154         77
+31 thameem           90         95        185         93
+38 saran            86         99        185         93
+26 vengat           70         70        140         70
+
+SQL>commit;
+Commit complete.)

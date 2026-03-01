@@ -1,0 +1,36 @@
+-- Create table branch8
+create table branch8(
+    bname varchar2(20),
+    bcity varchar2(10),
+    assets number(7)
+);
+
+-- Insert sample data
+insert into branch8 values('cantonment','trichy',50000);
+insert into branch8 values('rockfort','madurai',40000);
+insert into branch8 values('tnagar','chennai',30000);
+insert into branch8 values('kknagar','salem',60000);
+insert into branch8 values('rockfort','trichy',70000);
+
+-- View all records
+select * from branch8;
+
+-- Calculate average assets per branch
+select bname, avg(assets) as avg_assets
+from branch8
+group by bname;
+
+-- Sum of assets per branch with condition
+select bname, sum(assets) as total_assets
+from branch8
+group by bname
+having sum(assets) > 30000;
+
+-- Count of assets entries per branch
+select bname, count(assets) as count_assets
+from branch8
+group by bname
+having count(assets) >= 1;
+
+-- Commit changes
+commit;

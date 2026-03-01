@@ -1,0 +1,17 @@
+
+SET SERVEROUTPUT ON;
+
+DECLARE
+    str1 VARCHAR2(25) := 'dstr';  
+    str2 VARCHAR2(25);            
+    len NUMBER;                
+    i NUMBER;                  
+BEGIN
+    len := LENGTH(str1);          
+    FOR i IN REVERSE 1..len
+    LOOP
+    str2 := str2 || SUBSTR(str1, i, 1);
+    END LOOP;
+    DBMS_OUTPUT.PUT_LINE('Reverse of string is: ' || str2);
+END;
+/

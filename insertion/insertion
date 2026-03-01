@@ -1,0 +1,3 @@
+SQL> create table computer(name varchar2(10),regno number(10));
+Table created.
+SQL> insert into computer values('&name','&regno');

@@ -1,0 +1,17 @@
+SET SERVEROUTPUT ON;
+
+DECLARE
+  a NUMBER := 0;
+  b NUMBER := 1;
+  c NUMBER;
+BEGIN
+  DBMS_OUTPUT.PUT(a || ' ' || b || ' '); -- print first two numbers
+  FOR i IN 3..10 LOOP
+    c := a + b;
+    DBMS_OUTPUT.PUT(c || ' ');
+    a := b;
+    b := c;
+  END LOOP;
+  DBMS_OUTPUT.NEW_LINE; -- move to next line after printing
+END;
+/

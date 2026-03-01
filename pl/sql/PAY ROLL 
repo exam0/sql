@@ -1,0 +1,54 @@
+-- 1️⃣ Create payroll table
+CREATE TABLE payroll2(
+    eno   NUMBER(4),
+    ename VARCHAR2(10),
+    bpay  NUMBER(7),
+    hra   NUMBER(7),
+    da    NUMBER(7),
+    pf    NUMBER(7),
+    gpay  NUMBER(7),
+    npay  NUMBER(7)
+);
+
+-- 2️⃣ Insert sample data
+INSERT INTO payroll2 VALUES (101, 'Syed',   85000, 0, 0, 0, 0, 0);
+INSERT INTO payroll2 VALUES (102, 'Ahamed', 70000, 0, 0, 0, 0, 0);
+INSERT INTO payroll2 VALUES (103, 'Ziya',   90000, 0, 0, 0, 0, 0);
+INSERT INTO payroll2 VALUES (104, 'Riyas',  80000, 0, 0, 0, 0, 0);
+
+COMMIT;
+
+-- 3️⃣ PL/SQL block to calculate HRA, DA, PF, Gross Pay, and Net Pay
+SET SERVEROUTPUT ON;
+
+DECLARE
+    CURSOR c_pay IS SELECT * FROM payroll2;
+    rec payroll2%ROWTYPE;
+BEGIN
+    OPEN c_pay;
+    LOOP
+        FETCH c_pay INTO rec;
+        EXIT WHEN c_pay%NOTFOUND;
+
+        -- Calculations
+        rec.hra   := rec.bpay * 0.5;   -- 50% HRA
+        rec.da    := rec.bpay * 0.15;  -- 15% DA
+        rec.pf    := rec.bpay * 0.12;  -- 12% PF
+        rec.gpay  := rec.bpay + rec.hra + rec.da; -- Gross Pay
+        rec.npay  := rec.gpay - rec.pf;           -- Net Pay
+
+        -- Update the table
+        UPDATE payroll2
+        SET hra = rec.hra,
+            da = rec.da,
+            pf = rec.pf,
+            gpay = rec.gpay,
+            npay = rec.npay
+        WHERE eno = rec.eno;
+    END LOOP;
+    CLOSE c_pay;
+END;
+/
+
+-- 4️⃣ Verify the results
+SELECT * FROM payroll2;

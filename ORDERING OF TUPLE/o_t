@@ -1,0 +1,15 @@
+create table customer6(cid number(5),cname varchar2(20),address varchar2(20));
+
+insert into customer6 values(&cid,'&cname','&address');
+/
+/
+/
+/
+
+select * from customer6;
+
+select cname from customer6 order by cname asc;
+
+select cname from customer6 order by cname desc;
+
+commit;

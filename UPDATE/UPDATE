@@ -1,0 +1,25 @@
+-- Create table
+create table act2(
+    ano number(10),
+    bname varchar2(20),
+    amount number(10)
+);
+
+insert into act2 values('&ano','&bname','&amount');
+
+select * from act2;
+
+update act2
+set amount = amount * 1.1;
+
+select * from act2;
+
+update act2
+set amount = amount * 5;
+
+select * from act2;
+
+update act2 set amount=case when amount<=10000 then amount*1.05 else amount*5 end;
+-- update act2 set amount=case when amount<=10000 then amount*1.05 else amount*5 end;
+select * from act2;
+commit;

@@ -1,0 +1,43 @@
+create table loan7(lno number(5), bname varchar2(20), amount number(5));
+
+desc loan7;
+
+insert into loan7 values(&lno,'&bname',&amount);
+/
+/
+/
+/
+
+select * from loan7;
+
+create table account7(ano number(7), bname varchar2(20), balance number(7));
+
+insert into account7 values(&ano,'&bname',&balance);
+/
+/
+/
+/
+
+select * from account7;
+
+-- UNION ALL: combines all rows, including duplicates
+select bname from loan7
+union all
+select bname from account7;
+
+-- UNION: combines rows and removes duplicates
+select bname from loan7
+union
+select bname from account7;
+
+-- INTERSECT: shows only common rows
+select bname from loan7
+intersect
+select bname from account7;
+
+-- MINUS: shows rows in loan7 not in account7
+select bname from loan7
+minus
+select bname from account7;
+
+commit;

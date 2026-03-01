@@ -1,0 +1,33 @@
+create table countries2(cid number(5),cname varchar2(25),ccode varchar2(25),primary key(cid));
+
+insert into countries2 values(&cid,'&cname','&ccode');
+
+select * from countries2;
+
+create table states2(sid number(5),sname varchar2(25),scode varchar2(25),primary key(sid));
+
+insert into states2 values(&sid,'&sname','&scode');
+
+select * from states2;
+
+alter table states2 add cid number(5);
+
+select * from states2;
+
+update states2 set cid=1 where sid=1;
+
+update states2 set cid=1 where sid=2;
+
+select * from states2;
+
+select * from countries2;
+
+alter table states2 add constraint fk_states2_countries2_id foreign key(cid) references countries2(cid) on delete cascade;
+
+delete from countries2 where cid=1;
+
+select * from states2;
+
+select * from countries2;
+
+commit;

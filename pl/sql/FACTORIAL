@@ -1,0 +1,77 @@
+spool on;
+SET SERVEROUTPUT ON;
+
+-- 1️⃣ Create factorial function
+CREATE OR REPLACE FUNCTION facto(N NUMBER)
+RETURN NUMBER IS
+BEGIN
+    IF N = 0 THEN
+        RETURN 1;
+    ELSE
+        RETURN N * facto(N - 1);
+    END IF;
+END;
+/
+
+-- 2️⃣ Test the factorial function
+DECLARE
+    N  NUMBER;
+    N1 NUMBER;
+BEGIN
+    N := &N;  -- Enter number here, e.g., 5
+    N1 := facto(N);
+    DBMS_OUTPUT.PUT_LINE('******************');
+    DBMS_OUTPUT.PUT_LINE('Factorial of ' || N || ' is ' || N1);
+    DBMS_OUTPUT.PUT_LINE('******************');
+END;
+/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SQL> spool on;
+SQL> set serveroutput on; 
+SQL> create function facto5(N Number)
+  2  return integer is
+  3  begin
+  4  if(n=0)then
+  5  return 1;
+  6  else
+  7  return(N*facto(N-1));
+  8  end if;
+  9  end;
+ 10  /
+
+Function created.
+
+SQL> declare
+  2  N Number;
+  3  N1 Number;
+  4  Begin 
+  5  N:=&N;
+  6  N1:=facto(N);
+  7  dbms_output.put_line('******************');
+  8  dbms_output.put_line('Factorial of'||N||'Is'||N1);
+  9  dbms_output.put_line('******************');
+ 10  end;
+ 11  /
+Enter value for n: 5
+old   5: N:=&N;
+new   5: N:=5;
+******************
+Factorial of5Is120
+******************
+
+PL/SQL procedure successfully completed.
+

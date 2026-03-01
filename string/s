@@ -1,0 +1,19 @@
+create table customer5(CID number(5),CNAME varchar2(20),address varchar2(20));
+
+desc customer5;
+
+insert into customer5 values(&cid,'&cname','&address');
+/
+/
+/
+/
+
+select * from customer5;
+
+select cname from customer5 where cname like 'r%';
+
+select cname from customer5 where cname like '%i';
+
+select cname from customer5 where cname like '%am%';
+
+commit;

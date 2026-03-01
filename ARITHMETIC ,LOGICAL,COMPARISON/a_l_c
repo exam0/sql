@@ -1,0 +1,56 @@
+create table emp5(eno number(5),ename varchar2(10),salary number(10));
+
+desc emp5;
+
+insert into emp5 values(&eno,'&ename',&salary);
+/
+/
+/
+/
+
+select * from emp5;
+
+select eno,ename,salary+100 as "bonus" from emp5;
+
+select eno,ename,salary-100 as "decrement" from emp5;
+
+select eno,ename,salary*100 as "increment" from emp5;
+
+select eno,ename,salary/100 as "incentive" from emp5;
+
+select * from emp5;
+
+
+create table emp6(eno number(5),ename varchar2(10),salary number(20),age number(5));
+
+desc emp6;
+
+insert into emp6 values(&eno,'&ename',&salary,&age);
+/
+/
+/
+/
+
+select * from emp6;
+
+select eno,ename,salary,age from emp6 where salary<400000 and age<19;
+
+select eno,ename,salary,age from emp6 where salary>300000 or age>18;
+
+select eno,ename,salary,age from emp6 where not age=18;
+
+select * from emp6;
+
+select * from account;
+
+select * from emp5 where salary=500000;
+
+select * from emp5 where salary>400000;
+
+select * from emp5 where salary<600000;
+
+select * from emp5 where salary>=400000;
+
+select * from emp5 where salary<=600000;
+
+commit;

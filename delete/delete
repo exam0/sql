@@ -1,0 +1,35 @@
+create table act(
+    ano number(10),
+    bname varchar2(20),
+    amount number(10)
+);
+
+insert into act values('&ano','&bname','&amount'); -- Enter data
+-- Example entries:
+-- 1001, trichy, 4001
+-- 1002, airport, 4002
+-- 1003, kknagar, 4003
+-- 1004, jknagar, 4004
+
+select * from act;
+
+create table br2(
+    bname varchar2(20),
+    bcity varchar2(20),
+    asset number(10)
+);
+
+insert into br2 values('&bname','&bcity','&asset'); -- Enter data
+-- Example entries:
+-- trichy, airport, 100000
+-- ariya, trichy, 200000
+-- keeran, pudu, 300000
+
+select * from br2;
+
+-- Delete a row from act table
+delete from act where bname='trichy';
+
+select * from act;
+
+commit;

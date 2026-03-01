@@ -1,0 +1,63 @@
+-- Create borrower10 table and insert data
+create table borrower10(cname varchar2(20), lno number(10));
+
+insert into borrower10 values('ragu',1001);
+insert into borrower10 values('thasu',1002);
+insert into borrower10 values('luffy',1003);
+insert into borrower10 values('zoro',1004);
+
+-- Create depositor10 table and insert data
+create table depositor10(cname varchar2(20), ano number(10));
+
+insert into depositor10 values('thasu',12345);
+insert into depositor10 values('shafu',12346);
+insert into depositor10 values('ragu',12347);
+insert into depositor10 values('priya',12348);
+
+-- Subqueries
+select distinct cname from borrower10 where cname in (select cname from depositor10);
+select distinct cname from borrower10 where cname not in (select cname from depositor10);
+
+-- Create branch10 table and insert data
+create table branch10(bname varchar2(20), bcity varchar2(20), assets number(7));
+
+insert into branch10 values('cantonment','trichy',50000);
+insert into branch10 values('rockfort','madurai',40000);
+insert into branch10 values('tnagar','chennai',30000);
+insert into branch10 values('kknagar','salem',60000);
+insert into branch10 values('rockfort','trichy',70000);
+
+-- Queries using SOME and ALL
+select bname, assets from branch10 where assets > some (select assets from branch10 where bcity='madurai');
+select bname, assets from branch10 where assets > all (select assets from branch10 where bcity='madurai');
+
+-- Aggregates
+select bname, avg_asset from (select bname, avg(assets) as avg_asset from branch10 group by bname) where avg_asset > 40000;
+select max(sum_asset) from (select bname, sum(assets) as sum_asset from branch10 group by bname);
+
+
+
+-- Create account10 table and insert data
+create table account10(ano number(10), bname varchar2(20), balance number(8));
+
+insert into account10 values(12345,'cantonment',20000);
+insert into account10 values(12346,'trichy',19000);
+insert into account10 values(12347,'jknagar',17000);
+insert into account10 values(12348,'kknagar',15000);
+
+-- Create branch11 table and insert data
+create table branch11(bname varchar2(20), bcity varchar2(20), assets number(10));
+
+insert into branch11 values('cantonment','trichy',50000);
+insert into branch11 values('rockfort','madurai',40000);
+insert into branch11 values('tnagar','chennai',30000);
+insert into branch11 values('kknagar','salem',60000);
+insert into branch11 values('rockfort','trichy',70000);
+
+-- Delete operations
+delete from account10 where bname='cantonment';
+delete from account10 where bname in (select bname from branch10 where bcity='salem');
+delete from account10 where balance < (select avg(balance) from account10);
+
+select * from account10;
+

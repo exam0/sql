@@ -1,0 +1,55 @@
+-- Create student table
+CREATE TABLE syed2 (
+    name   VARCHAR2(10),
+    regno  NUMBER(5)
+);
+
+-- Insert student records
+INSERT INTO syed2 VALUES('thameem',101);
+INSERT INTO syed2 VALUES('yasar',102);
+INSERT INTO syed2 VALUES('ansari',103);
+INSERT INTO syed2 VALUES('shameer',104);
+INSERT INTO syed2 VALUES('pughal',105);
+INSERT INTO syed2 VALUES('safath',106);
+
+-- View inserted student records
+SELECT * FROM syed2;
+
+-- Create marks/total table
+CREATE TABLE ahamed2 (
+    regno  NUMBER(7),
+    total  NUMBER(8)
+);
+
+-- Insert total marks
+INSERT INTO ahamed2 VALUES(101,500);
+INSERT INTO ahamed2 VALUES(102,485);
+INSERT INTO ahamed2 VALUES(103,455);
+INSERT INTO ahamed2 VALUES(104,355);
+INSERT INTO ahamed2 VALUES(105,488);
+INSERT INTO ahamed2 VALUES(106,366);
+INSERT INTO ahamed2 VALUES(107,460);
+
+-- View inserted totals
+SELECT * FROM ahamed2;
+
+-- Inner join: only matching regno in both tables
+SELECT *
+FROM syed2
+JOIN ahamed2
+ON syed2.regno = ahamed2.regno;
+
+-- Left join: all students, totals where available
+SELECT *
+FROM syed2
+LEFT JOIN ahamed2
+ON syed2.regno = ahamed2.regno;
+
+-- Right join: all totals, students where available
+SELECT *
+FROM syed2
+RIGHT JOIN ahamed2
+ON syed2.regno = ahamed2.regno;
+
+-- Commit the changes
+COMMIT;

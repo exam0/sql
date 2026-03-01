@@ -1,4 +1,0 @@
-
-• SQL&gt; select * from br; 
-• SQL&gt; create view thaas (select bname, bcity from br); 
-• SQL&gt; commit; 

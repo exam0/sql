@@ -1,0 +1,49 @@
+-- Create table for students
+CREATE TABLE student10(
+    rollno  NUMBER(10),
+    name    VARCHAR2(20),
+    mark1   NUMBER(10),
+    mark2   NUMBER(10),
+    total   NUMBER(10),
+    average NUMBER(10)
+);
+insert into student10 values(&rollno,'&name',&mark1,&mark2,'','');
+
+
+-- Insert sample data
+INSERT INTO student10 VALUES(40, 'syed', 90, 98, NULL, NULL);
+INSERT INTO student10 VALUES(39, 'marzuq', 76, 78, NULL, NULL);
+INSERT INTO student10 VALUES(31, 'kadhar', 90, 95, NULL, NULL);
+INSERT INTO student10 VALUES(38, 'mohamed', 86, 99, NULL, NULL);
+INSERT INTO student10 VALUES(26, 'Aahil', 70, 70, NULL, NULL);
+
+-- Enable output display
+SET SERVEROUTPUT ON;
+
+DECLARE
+  CURSOR c1 IS SELECT * FROM student10;
+  x student10%ROWTYPE;
+BEGIN
+  OPEN c1;
+  LOOP
+    FETCH c1 INTO x;
+    EXIT WHEN c1%NOTFOUND;
+    
+    -- calculate total and average
+    x.total := x.mark1 + x.mark2;
+    x.average := x.total/2;
+    
+    -- update the table
+    UPDATE student10
+    SET total = x.total,
+    average = x.average
+    WHERE rollno = x.rollno;
+  END LOOP;
+  CLOSE c1;
+END;
+/
+-- Check the results
+SELECT * FROM student10;
+
+-- Commit changes
+COMMIT;

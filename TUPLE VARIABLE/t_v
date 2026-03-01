@@ -1,0 +1,18 @@
+create table branch5(Bname varchar2(20),Bcity varchar2(20),assets number(10));
+
+desc branch5;
+
+insert into branch5 values('&bname','&bcity',&assets);
+/
+/
+/
+/
+
+select * from branch5;
+
+select t.bname 
+from branch5 t, branch s 
+where t.assets > s.assets 
+and s.bcity = 'chennai';
+
+commit;

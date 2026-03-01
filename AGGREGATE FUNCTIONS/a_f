@@ -1,0 +1,33 @@
+create table branch7(
+    bname varchar2(20),
+    bcity varchar2(10),
+    assets number(7)
+);
+
+insert into branch7 values('&bname','&bity',&assets);
+/ 
+/ 
+/ 
+/ 
+
+select * from branch7;
+
+-- Aggregate queries
+select bname, avg(assets) from branch7
+where bname='cantonment'
+group by bname;
+
+select bname, min(assets) as minasset from branch7
+where bname='rockfort'
+group by bname;
+
+select bname, max(assets) as maxasset from branch7
+where bname='rockfort'
+group by bname;
+
+select sum(assets) from branch7;
+
+select count(*) bcity from branch7
+where bcity='trichy';
+
+commit;

@@ -1,0 +1,23 @@
+create table jamal(cname varchar2(10),ano number(20));
+
+insert into jamal values('&cname','&ano');
+
+select * from jamal;
+
+alter table jamal add city varchar2(20);
+
+desc jamal;
+
+alter table jamal modify ano number(20);
+
+desc jamal;
+
+alter table jamal rename column ano to regno;
+
+desc jamal;
+
+alter table jamal drop column city;
+
+select * from jamal;
+
+commit;

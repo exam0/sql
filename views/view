@@ -1,0 +1,21 @@
+create table br(bname varchar2(20),bcity varchar2(20),asset number(10));
+insert into br values('&bname','&bcity','&asset');
+create view thaas (select bname, bcity from br); 
+
+
+or
+
+
+
+create table br (
+    bname varchar2(20),
+    bcity varchar2(20),
+    asset number(10)
+);
+
+insert into br values('&bname','&bcity','&asset');
+
+create view thaas as
+select bname, bcity
+from br;
+

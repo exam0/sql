@@ -1,0 +1,12 @@
+CREATE TABLE customer1 (
+    cid NUMBER(5),
+    cname VARCHAR2(20),
+    caddr VARCHAR2(20)
+);
+
+INSERT INTO customer1 VALUES (710, 'gopi', 'airport');
+INSERT INTO customer1 VALUES (810, 'khaleef', 'ilayangudi');
+INSERT INTO customer1 VALUES (910, 'saran', 'samayapuram');
+INSERT INTO customer1 VALUES (1100, 'ajay', 'mannarpuram');
+
+SELECT * FROM customer1;

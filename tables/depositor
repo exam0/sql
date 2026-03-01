@@ -1,0 +1,11 @@
+CREATE TABLE depositor (
+    cname VARCHAR2(20),
+    anum NUMBER(10)
+);
+
+INSERT INTO depositor VALUES ('ajay', 999);
+INSERT INTO depositor VALUES ('imam', 998);
+INSERT INTO depositor VALUES ('gopi', 997);
+INSERT INTO depositor VALUES ('hari', 996);
+
+SELECT * FROM depositor;

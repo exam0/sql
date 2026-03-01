@@ -1,0 +1,8 @@
+CREATE TABLE branch (bname VARCHAR2(20),bcity VARCHAR2(20),assets NUMBER(20));
+
+INSERT INTO branch VALUES ('iob', 'trichy', 20000000);
+INSERT INTO branch VALUES ('iob', 'kerala', 300000);
+INSERT INTO branch VALUES ('iob', 'chennai', 50000);
+INSERT INTO branch VALUES ('iob', 'jammmu', 600000);
+
+SELECT * FROM branch;

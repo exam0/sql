@@ -1,0 +1,11 @@
+CREATE TABLE borrower2 (
+    cname VARCHAR2(20),
+    lno NUMBER(10)
+);
+
+INSERT INTO borrower2 VALUES ('harish', 1);
+INSERT INTO borrower2 VALUES ('david', 2);
+INSERT INTO borrower2 VALUES ('thameem', 3);
+INSERT INTO borrower2 VALUES ('syed', 4);
+
+SELECT * FROM borrower2;

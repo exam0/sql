@@ -1,0 +1,13 @@
+CREATE TABLE supplier (
+    sno NUMBER(10) PRIMARY KEY,
+    pno NUMBER(10) PRIMARY KEY,
+    color VARCHAR2(15),
+    quantity NUMBER(10)
+);
+
+INSERT INTO supplier VALUES (1001, 405, 'blue', 100);
+INSERT INTO supplier VALUES (1002, 410, 'green', 250);
+INSERT INTO supplier VALUES (1003, 415, 'red', 500);
+INSERT INTO supplier VALUES (1004, 420, 'yellow', 550);
+
+SELECT * FROM supplier;
